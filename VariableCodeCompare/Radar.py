@@ -23,7 +23,7 @@ class RadarCompare:
         self.universities = universities
 
         # Create a figure and subplot
-        self.fig, ax = plt.subplots(figsize=(8, 10), subplot_kw={'polar': True})
+        self.fig, ax = plt.subplots(figsize=(6,7.5), subplot_kw={'polar': True})
 
         # Plot the radar charts
         for i, sample_data in enumerate(self.dataMajorPoint):
@@ -37,15 +37,16 @@ class RadarCompare:
         # Set the ticks and labels for the radar chart
         ax.set_xticks(angles[:-1])
         ax.set_xticklabels(Majors)
+        
         ax.yaxis.grid(True)
         plt.subplots_adjust(top=1.05)
 
         # Add a legend
-        ax.legend(loc='lower center', bbox_to_anchor=(0.5, -0.39))
+        ax.legend(loc='lower center', bbox_to_anchor=(0.5, -0.39),ncol=3)
 
         # Set the title
         title_offset = 1.1  # You can adjust the value as needed
-        ax.set_title("Comparison of Universities", size=20, weight='bold', y=title_offset)
+        ax.set_title("Comparison of Universities", size=15, weight='bold', y=title_offset)
 
         # Show the plot
         plt.show()

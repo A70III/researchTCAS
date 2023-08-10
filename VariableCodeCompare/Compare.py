@@ -1,17 +1,18 @@
 from UniversityName import UniverName
-from MajorPointUniver import InputUniversity
+from MajorPointUniver import InputMajorCriteria
 from Radar import RadarCompare
 import numpy as np
 import matplotlib.pyplot as plt
 
 univer_name_obj = UniverName()
-major_obj = InputUniversity()
+major_obj = InputMajorCriteria()
 radar_obj = RadarCompare()
 countUni=0
 
-starts = input("Start to Input Score? (Y/N): ")
+print("Welcome to University Compare Major Criteria Score System! (Max 10 University)")
+starts = input("Start to Input Major Criteria Score? (Y/N): ")
 if starts.upper() == "N":
-    print("END of Program")
+    print("End of Program.")
 else:
     while True:
     
@@ -20,12 +21,17 @@ else:
         
         major_obj.groupMajorPoint(univer_name_obj.groupUniName[countUni])
     
-        print(major_obj.groupPointMajor)
-
-        continueInput = input("Input Another University Criteria (Y/N): ")
-        if continueInput.upper() == "N":
-            break
+        print(major_obj.groupPoint)
         countUni +=1
         
-radar_obj.PlotRadar(univer_name_obj.groupUniName,major_obj.groupPointMajor)
+        if countUni==10:
+            break
+
+        continueInput = input("Input Another University Criteria? (Y/N): ")
+        if continueInput.upper() == "N":
+            break
+        
+        
+        
+radar_obj.PlotRadar(univer_name_obj.groupUniName,major_obj.groupPoint)
 

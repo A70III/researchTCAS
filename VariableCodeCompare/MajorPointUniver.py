@@ -1,8 +1,8 @@
-class InputUniversity():
+class InputMajorCriteria():
     
     def __init__(self):
         self.university_name = ""
-        self.groupPointMajor = []
+        self.groupPoint = []
         self.countUni = 0
     
     def groupMajorPoint(self,university_name):
@@ -11,10 +11,10 @@ class InputUniversity():
         pointMajor = []
 
         for _ in range(6):
-            setPoint = float(input("Input Score: "))
+            setPoint = float(input("Input Major Criteria Score : "))
             pointMajor.insert(_,setPoint)
 
-        self.groupPointMajor.insert(self.countUni,pointMajor)
+        self.groupPoint.insert(self.countUni,pointMajor)
         
         pointMajor = []
         self.countUni  += 1
