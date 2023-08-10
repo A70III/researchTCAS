@@ -6,7 +6,12 @@ data = [
     [0.0, 0.0, 0.0, 80.0, 0.0, 20.0],   # Example 1 (Chulalongkorn University)
     [35.0, 0.0, 0.0, 35.0, 0.0, 30.0],   # Example 2 (Kasetsart University)
     [25.0, 20.0, 0.0, 10.0, 45.0, 0.0],  # Example 3 (Khon Kaen University)
-    [20.0, 40.0, 0.0, 0.0, 0.0, 40.0]    # Example 4 (King Mongkut's Thonburi)
+    [20.0, 40.0, 0.0, 0.0, 0.0, 40.0],  # Example 3 (Khon Kaen University)
+    [20.0, 40.0, 20.0, 0.0, 0.0, 40.0] ,  # Example 3 (Khon Kaen University)
+    [20.0, 40.0, 0.0, 20.0, 0.0, 20.0] ,  # Example 3 (Khon Kaen University)
+    [20.0, 40.0, 0.0, 0.0, 0.0, 40.0] ,  # Example 3 (Khon Kaen University)
+    [20.0, 40.0, 20.0, 0.0, 0.0, 40.0] ,  # Example 3 (Khon Kaen University)
+    [20.0, 40.0, 0.0, 20.0, 0.0, 40.0] ,  # Example 3 (Khon Kaen University)     # Example 4 (King Mongkut's Thonburi)
 ]
 
 # Labels for the radar chart axes
@@ -14,18 +19,23 @@ Majors = ['Language', 'Thinking', 'Arts and Society', 'Science', 'Mathematics', 
 
 # Colors for each sample
 
-colors = ['pink', 'green', 'red', 'orange']
+colors = ['magenta','blue', 'green', 'red', 'orange','purple','yellow','cyan','brown','black'] #limit to compare?
 
 # Names of the universities
 universities = [
     "Chulalongkorn University",
     "Kasetsart University",
     "Khon Kaen University",
-    "King Mongkut's University of Technology Thonburi"
+    "King Mongkut's University of Technology Thonburi",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
 ]
 
 # Create a figure and subplot
-fig, ax = plt.subplots(figsize=(8, 9), subplot_kw={'polar': True})
+fig, ax = plt.subplots(figsize=(8, 10), subplot_kw={'polar': True})
 
 # Plot the radar charts
 for i, sample_data in enumerate(data):
@@ -40,12 +50,14 @@ for i, sample_data in enumerate(data):
 ax.set_xticks(angles[:-1])
 ax.set_xticklabels(Majors)
 ax.yaxis.grid(True)
+plt.subplots_adjust(top=1.05)
 
 # Add a legend
-ax.legend(loc='lower center', bbox_to_anchor=(0.5, -0.2))
+ax.legend(loc='lower center', bbox_to_anchor=(0.5, -0.39))
 
 # Set the title
-ax.set_title("Comparison of Universities", size=20, weight='bold')
+title_offset = 1.1  # You can adjust the value as needed
+ax.set_title("Comparison of Universities", size=20, weight='bold', y=title_offset)
 
 # Show the plot
 plt.show()
