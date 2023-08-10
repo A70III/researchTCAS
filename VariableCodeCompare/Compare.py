@@ -1,8 +1,6 @@
 from UniversityName import UniverName
 from MajorPointUniver import InputMajorCriteria
 from Radar import RadarCompare
-import numpy as np
-import matplotlib.pyplot as plt
 
 univer_name_obj = UniverName()
 major_obj = InputMajorCriteria()
