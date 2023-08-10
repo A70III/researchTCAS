@@ -1,32 +1,25 @@
-from InputUniversity import InputUniversity
-import numpy as np
+from UniversityName import UniverName
+from MajorPointUniver import InputUniversity
 
-groupMajorUni = np.array('i',[])
-countUniver=0
-while(True):
-    groupMajorPoint = np.array('i',[])
-    for _ in range(6):
-        setPoint = int(input("Input Score: "))
-        groupMajorPoint.append(setPoint)  # Append scores to the 1D array
+univer_name_obj = UniverName()
+input_university_obj = InputUniversity()
+countUni=0
 
-    groupMajorUni.append(groupMajorPoint)  # Append the 1D array to the 2D array
+starts = input("Start to Input Score? (Y/N): ")
+if starts.upper() == "N":
+    print("END of Program")
+else:
+    while True:
+    
+        univer_name_obj.InputUniName(starts)
+        print(univer_name_obj.groupUniName[countUni])
+        
+        input_university_obj.groupMajorPoint(univer_name_obj.groupUniName[countUni])
+    
+        print(input_university_obj.groupPointMajor)
 
-    ConInput = input("Input Another University Criteria (Y/N): ")
-    if ConInput.upper() == "N":
-        break
-
-print(groupMajorUni)
-#def InputMajorPoint():
-    #major1 = int(input("Input Language Score: "))
-   # major2 = int(input("Input Thinking Score: "))
-   # major3 = int(input("Input Arts and Society Score: "))
-    ##major4 = int(input("Input Science Score: "))
-  #  major5 = int(input("Input Mathematics Score: "))
-   # major6 = int(input("Input General Score: "))
-   # return major1, major2, major3, major4, major5, major6
-
-test = InputUniversity()
-#major1, major2, major3, major4, major5, major6 = InputMajorPoint()
-test.MajorInit(groupMajorPoint[0],groupMajorPoint[1],groupMajorPoint[2],groupMajorPoint[3],groupMajorPoint[4],groupMajorPoint[5])
-print(test.MajorInit)
-print()
+        continueInput = input("Input Another University Criteria (Y/N): ")
+        if continueInput.upper() == "N":
+            break
+        countUni +=1
+print(univer_name_obj.groupUniName)
