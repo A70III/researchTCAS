@@ -14,10 +14,10 @@ if starts.upper() == "N":
 else:
     while True:
     
-        univer_name_obj.InputUniName(starts)
+        univer_name_obj.InputUniName(starts)#เริ่มรับชื่อมหาลัย เก็บในlist
         print(univer_name_obj.groupUniName[countUni])
         
-        major_obj.groupMajorPoint(univer_name_obj.groupUniName[countUni])
+        major_obj.groupMajorPoint(univer_name_obj.groupUniName[countUni])#รับแต้มพร้อมเลือกมหาลัย(ตามตำแหน่งลำดับในlist)
     
         print(major_obj.groupPoint)
         countUni +=1
