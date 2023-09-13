@@ -1,16 +1,21 @@
-class RadarCompare:
+class RadarGraph:
     
     def __init__(self) -> None:
-        self.dataMajorPoint = []
-        self.universities = []
-        self.fig = None
+        UniversityList =[]
+        pass
         
-    def PlotRadar(self,universities,dataMajorPoint):
+    def PlotRadar(self,UniversityList):
         import numpy as np
         import matplotlib.pyplot as plt
+        self.UniversityList = UniversityList
 
         # Data for the radar charts
-        self.dataMajorPoint = dataMajorPoint
+        groupMajorPoint = []
+        countUniver = len(UniversityList)
+        for i in range(countUniver):
+            groupMajorPoint.append(UniversityList[i].MajorScore)
+            
+        
     
 
         # Labels for the radar chart axes
@@ -19,19 +24,16 @@ class RadarCompare:
         # Colors for each sample
         colors = ['magenta','blue', 'green', 'red', 'orange','purple','yellow','cyan','brown','black'] #limit to compare = 10
 
-        # Names of the universities
-        self.universities = universities
-
         # Create a figure and subplot
         self.fig, ax = plt.subplots(figsize=(6,7.5), subplot_kw={'polar': True})
 
         # Plot the radar charts
-        for i, sample_data in enumerate(self.dataMajorPoint):
+        for i, sample_data in enumerate(groupMajorPoint):
             angles = np.linspace(0, 2 * np.pi, len(Majors), endpoint=False).tolist()
             sample_data += sample_data[:1]  # Close the plot
             angles += angles[:1]  # Close the plot
 
-            ax.plot(angles, sample_data, marker='o', linestyle='-', color=colors[i], linewidth=2, label=universities[i])
+            ax.plot(angles, sample_data, marker='o', linestyle='-', color=colors[i], linewidth=2, label=UniversityList[i].NameUni)
             ax.fill(angles, sample_data, color=colors[i], alpha=0.25)
 
         # Set the ticks and labels for the radar chart
