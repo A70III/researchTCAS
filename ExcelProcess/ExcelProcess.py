@@ -1,6 +1,6 @@
 import pandas as pd
 
-excel_file_path = '\ExcelProcess\Raw_Data.csv'
+excel_file_path = 'Raw_Data.csv'
 columns_to_process = ['สถาบัน', 'วิทยาเขต', 'คณะ/สำนักวิชา', 'ชื่อหลักสูตร','รายละเอียด', 'เกรดเฉลี่ย'
                       , 'TGAT', 'TGAT1', 'TGAT2', 'TGAT3','TPAT3','A-Level คณิตศาสตร์ประยุกต์ 1'
                       ,'A-Level วิทยาเขาสตร์ประยุกต์','A-Level ฟิสิกส์','A-Level เคมี','A-Level ชีววิทยา'
@@ -33,7 +33,7 @@ result_df['Mathematics'] = df[totalMajorMathematics].sum(axis=1)
 result_df['General'] = df[totalMajorGeneral].sum(axis=1)
 
 # บันทึกข้อมูลลงใน Excel
-output_excel_file_path = '\ExcelProcess\Processed_Data.xlsx'  # ระบุเส้นทางไฟล์ Excel ที่ต้องการเขียน
+output_excel_file_path = 'Processed_Data.xlsx'  # ระบุเส้นทางไฟล์ Excel ที่ต้องการเขียน
 result_df.to_excel(output_excel_file_path, index=False)
 
 print(f'ข้อมูลถูกเขียนลงใน {output_excel_file_path}')
