@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>รับค่าตัวแปร</title>
+</head>
+<body>
+    <h1>กรุณาป้อนข้อมูล:</h1>
+    <form method="POST" action="/">
+        <label for ="html">ชื่อสถาบัน</label>
+        <input type="text" name="NameUni" placeholder="ชื่อสถาบัน"><br>
+        <label for ="html">คะแนนภาษา</label>
+        <input type="float" name="LangScr" placeholder="0"><br>
+        <label for ="html">คะแนนคิดวิเคราะห์</label>
+        <input type="float" name="ThinkScr" placeholder="0"><br>
+        <label for ="html">คะแนนศิลปศาสตร์และสังคมศาสตร์</label>
+        <input type="float" name="ArtScr" placeholder="0"><br>
+        <label for ="html">คะแนนวิทยาศาสตร์</label>
+        <input type="float" name="SciScr" placeholder="0"><br>
+        <label for ="html">คะแนนคณิตศาสตร์</label>
+        <input type="float" name="MathScr" placeholder="0"><br>
+        <label for ="html">คะแนนทั่วไป</label>
+        <input type="float" name="GenScr" placeholder="0"><br>
+        <input type="submit" value="ส่งข้อมูล"><br>
+    </form>
+
+    <h2>ข้อมูลสถาบัน</h2>
+    <div id="radar_graph"></div>
+</body>
+</html>
