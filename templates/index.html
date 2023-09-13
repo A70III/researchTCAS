@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8'>
+    <title>My HTML Page</title>
+
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          
+          input {
+            margin: 10px 0;
+          }
+
+          .container {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+        .image-frame {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-right: 20px;
+            width: 576px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .score-input {
+            margin: 5px 0;
+        }
+        </style>          
+  </head>
+  <body>
+
+    
+    <div class="container">
+        <div class="image-frame">
+            <h1>กรอบแสดงภาพ</h1>
+            <p id="universityName">{{ data }}</p>
+            <!-- นี่คือส่วนของกรอบแสดงภาพ -->
+            <img src="radar_chart.png" alt="Radar Image" id="radarImage">
+        </div>
+
+    <form action="/" method="POST">
+        <label> ชื่อสถาบัน </label>
+        <input  type="text" name="UniversityName" placeholder="ชื่อสถาบัน" ><br>
+
+        <label> Language Score </label>
+        <input type="number" name="Language" placeholder="Language Score" value = "0"><br>
+
+        <label> Thinking Score </label>
+        <input type="number" name="Thinking" placeholder="Thinking Score" value = "0"><br>
+
+        <label> Arts and Society Score </label>
+        <input type="number" name="ArtNSoci" placeholder="Arts and Society Score" value = "0"><br>
+
+        <label> Science Score </label>
+        <input type="number" name="Science" placeholder="Science Score" value = "0"><br>
+
+        <label> Mathematics Score </label>
+        <input type="number" name="Math" placeholder="Mathematics Score" value = "0"><br>
+
+        <label> General Score </label>
+        <input type="number" name="General" placeholder="General Score" value = "0"><br>
+
+        <input type="submit" value="เพิ่มสถาบัน"><br>
+        <input type="submit" name="finish" value="เสร็จสิ้น" method = "GET">
+        
+        
+        
+    </form>
+    <form >
+    
+    
+    
+
+    
+    
+  </body>
+</html>

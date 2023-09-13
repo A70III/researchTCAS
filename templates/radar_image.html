@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8'>
+    <title>My HTML Page</title>
+    <style>
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .image-frame-container {
+        display: flex;
+        align-items: center;
+      }
+
+      .image-frame {
+        border: 2px solid #ccc;
+        padding: 20px;
+        width: 576px;
+        height: 800px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .bar-container {
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px; /* เพิ่ม margin-left เพื่อทำให้ระยะห่างระหว่าง image-frame และ bar-container */
+      }
+
+      .label {
+        font-size: 18px;
+        margin-right: 10px;
+      }
+
+      .label2 {
+        font-size: 32px;
+      }
+
+      .bar {
+        width: 100%; /* ทำให้ความกว้างเท่ากับ 100% */
+        height: 20px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        position: relative;
+      }
+      
+
+      .bar-fill {
+        height: 20px;
+        background-color: blue;
+      }
+
+      .bar-gray {
+        background-color: gray;
+      }
+
+      .percent {
+        font-size: 12px;
+        position: absolute;
+        right: 5px;
+        transform: translateY(-50%);
+      }
+
+      
+      
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="image-frame-container" >
+        <div class="image-frame" style="border: 2px solid #ccc;">
+          <p id="universityName">{{ data }}</p>
+          <!-- นี่คือส่วนของกรอบแสดงภาพ -->
+          <img src="{{ url_for('static', filename='radar_chart.png') }}" alt="รายละเอียดรูปภาพ" style="max-width: 100%; max-height: 100%;">
+          
+
+
+        </div>
+      </div>
+
+
+      <div class="bar-container">
+  <h1><div class="label">UniversityName</div></h1>
+  <select id="universitySelect" placeholder="University">
+    {% for university in universities %}
+    <option value="{{ university }}">{{ university }}</option>
+    {% endfor %}
+  </select>
+  
+  <h1><div class="label">Language <span id="LanguageScore">0%</span></div></h1>
+  <div class="bar bar-gray"><div class="bar-fill" id="LanguageBarFill"></div></div>
+  <h1><div class="label">Thinking <span id="ThinkingScore">0%</span></div></h1>
+  <div class="bar bar-gray"><div class="bar-fill" id="ThinkingBarFill"></div></div>
+  <h1><div class="label">Arts and Society <span id="ArtsScore">0%</span></div></h1>
+  <div class="bar bar-gray"><div class="bar-fill" id="ArtsBarFill"></div></div>
+  <h1><div class="label">Science <span id="ScienceScore">70%</span></div></h1>
+  <div class="bar bar-gray"><div class="bar-fill" id="ScienceBarFill" ></div></div>
+  <h1><div class="label">Mathematics <span id="MathematicsScore">10%</span></div></h1>
+  <div class="bar bar-gray"><div class="bar-fill" id="MathematicsBarFill"></div></div>
+  <h1><div class="label">General <span id="GeneralScore">0%</span></div></h1>
+  <div class="bar bar-gray"><div class="bar-fill" id="GeneralBarFill"></div></div>
+</div>
+<p id = "ScoreGroup"></p>
+
+
+    </div>
+    <div id="listUScore" style="display: none;">{{ ListU_Score | tojson }}</div>
+    <script>
+      var scores = JSON.parse(document.getElementById("listUScore").textContent);
+
+      
+      
+      // Function สำหรับอัปเดตคะแนนและแสดงบาร์เมื่อมีการเลือกใน dropdown
+      function updateScores() {
+        var selectElement = document.getElementById("universitySelect"); // เพิ่มบรรทัดนี้
+        var selectedIndex = selectElement.selectedIndex;
+    
+        var languageBarFill = document.getElementById("LanguageBarFill");
+        var thinkingBarFill = document.getElementById("ThinkingBarFill");
+        var artsBarFill = document.getElementById("ArtsBarFill");
+        var scienceBarFill = document.getElementById("ScienceBarFill");
+        var mathematicsBarFill = document.getElementById("MathematicsBarFill");
+        var generalBarFill = document.getElementById("GeneralBarFill");
+    
+        languageBarFill.style.width = scores[selectedIndex][0] + "%";
+        thinkingBarFill.style.width = scores[selectedIndex][1] + "%";
+        artsBarFill.style.width = scores[selectedIndex][2] + "%";
+        scienceBarFill.style.width = scores[selectedIndex][3] + "%";
+        mathematicsBarFill.style.width = scores[selectedIndex][4] + "%";
+        generalBarFill.style.width = scores[selectedIndex][5] + "%";
+    
+        document.getElementById("LanguageScore").textContent = scores[selectedIndex][0] + "%";
+        document.getElementById("ThinkingScore").textContent = scores[selectedIndex][1] + "%";
+        document.getElementById("ArtsScore").textContent = scores[selectedIndex][2] + "%";
+        document.getElementById("ScienceScore").textContent = scores[selectedIndex][3] + "%";
+        document.getElementById("MathematicsScore").textContent = scores[selectedIndex][4] + "%";
+        document.getElementById("GeneralScore").textContent = scores[selectedIndex][5] + "%";
+      }
+    
+      // เพิ่ม event listener สำหรับ dropdown เพื่ออัปเดตคะแนนเมื่อมีการเลือกใน dropdown
+      document.getElementById("universitySelect").addEventListener("change", updateScores);
+    
+      // เรียกใช้ฟังก์ชัน updateScores เพื่อแสดงคะแนนเริ่มต้นทันที
+      updateScores();
+      
+
+
+      
+    </script>
+    
+    
+    
+      
+      
+  </body>
+</html>
+
+
+   
+      
