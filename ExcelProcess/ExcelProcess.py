@@ -33,7 +33,7 @@ result_df['Mathematics'] = df[totalMajorMathematics].sum(axis=1)
 result_df['General'] = df[totalMajorGeneral].sum(axis=1)
 
 # บันทึกข้อมูลลงใน Excel
-output_excel_file_path = 'Processed_Data.xlsx'  # ระบุเส้นทางไฟล์ Excel ที่ต้องการเขียน
-result_df.to_excel(output_excel_file_path, index=False)
+output_csv_file_path = 'Processed_Data.csv'  # ระบุเส้นทางไฟล์ Excel ที่ต้องการเขียน
+result_df.to_excel(output_csv_file_path, index=False)
 
-print(f'ข้อมูลถูกเขียนลงใน {output_excel_file_path}')
+print(f'ข้อมูลถูกเขียนลงใน {output_csv_file_path}')
