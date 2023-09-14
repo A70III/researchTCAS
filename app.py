@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, redirect
 from RadarGraph import RadarGraph
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -14,6 +15,8 @@ def index():
 
 @app.route('/', methods=['GET', 'POST'])
 def foo():
+    
+    
     ScoreGroup = []
     if 'finish' in request.form:
         return redirect('/finish_page')
@@ -54,6 +57,16 @@ def another_page():
     universities = ListU_Name
     radar_obj.PlotRadar(ListU_Name,ListU_Score)
     return render_template('radar_image.html',universities=universities,ListU_Score=ListU_Score)
+
+@app.route('/reset', methods=['POST'])
+def reset():
+    global ListU_Score
+    global ListU_Name
+    ListU_Score = []
+    ListU_Name = []
+    return redirect('/')
+
+
 
 
 if __name__ == '__main__':

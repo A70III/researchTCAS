@@ -99,12 +99,19 @@
   <div class="bar bar-gray"><div class="bar-fill" id="ThinkingBarFill"></div></div>
   <h1><div class="label">Arts and Society <span id="ArtsScore">0%</span></div></h1>
   <div class="bar bar-gray"><div class="bar-fill" id="ArtsBarFill"></div></div>
-  <h1><div class="label">Science <span id="ScienceScore">70%</span></div></h1>
+  <h1><div class="label">Science <span id="ScienceScore">0%</span></div></h1>
   <div class="bar bar-gray"><div class="bar-fill" id="ScienceBarFill" ></div></div>
-  <h1><div class="label">Mathematics <span id="MathematicsScore">10%</span></div></h1>
+  <h1><div class="label">Mathematics <span id="MathematicsScore">0%</span></div></h1>
   <div class="bar bar-gray"><div class="bar-fill" id="MathematicsBarFill"></div></div>
   <h1><div class="label">General <span id="GeneralScore">0%</span></div></h1>
   <div class="bar bar-gray"><div class="bar-fill" id="GeneralBarFill"></div></div>
+  <div class='label'>
+    <form action="/reset" method="POST">
+      <input type="submit" value="Reset" name="reset">
+    </form>
+  </div>
+  
+  
 </div>
 <p id = "ScoreGroup"></p>
 
@@ -118,36 +125,56 @@
       
       // Function สำหรับอัปเดตคะแนนและแสดงบาร์เมื่อมีการเลือกใน dropdown
       function updateScores() {
-        var selectElement = document.getElementById("universitySelect"); // เพิ่มบรรทัดนี้
+        var selectElement = document.getElementById("universitySelect");
         var selectedIndex = selectElement.selectedIndex;
-    
+      
         var languageBarFill = document.getElementById("LanguageBarFill");
         var thinkingBarFill = document.getElementById("ThinkingBarFill");
         var artsBarFill = document.getElementById("ArtsBarFill");
         var scienceBarFill = document.getElementById("ScienceBarFill");
         var mathematicsBarFill = document.getElementById("MathematicsBarFill");
         var generalBarFill = document.getElementById("GeneralBarFill");
-    
-        languageBarFill.style.width = scores[selectedIndex][0] + "%";
-        thinkingBarFill.style.width = scores[selectedIndex][1] + "%";
-        artsBarFill.style.width = scores[selectedIndex][2] + "%";
-        scienceBarFill.style.width = scores[selectedIndex][3] + "%";
-        mathematicsBarFill.style.width = scores[selectedIndex][4] + "%";
-        generalBarFill.style.width = scores[selectedIndex][5] + "%";
-    
-        document.getElementById("LanguageScore").textContent = scores[selectedIndex][0] + "%";
-        document.getElementById("ThinkingScore").textContent = scores[selectedIndex][1] + "%";
-        document.getElementById("ArtsScore").textContent = scores[selectedIndex][2] + "%";
-        document.getElementById("ScienceScore").textContent = scores[selectedIndex][3] + "%";
-        document.getElementById("MathematicsScore").textContent = scores[selectedIndex][4] + "%";
-        document.getElementById("GeneralScore").textContent = scores[selectedIndex][5] + "%";
+      
+        if (selectedIndex >= 0 && selectedIndex < scores.length) { // เพิ่มเงื่อนไขนี้
+          languageBarFill.style.width = scores[selectedIndex][0] + "%";
+          thinkingBarFill.style.width = scores[selectedIndex][1] + "%";
+          artsBarFill.style.width = scores[selectedIndex][2] + "%";
+          scienceBarFill.style.width = scores[selectedIndex][3] + "%";
+          mathematicsBarFill.style.width = scores[selectedIndex][4] + "%";
+          generalBarFill.style.width = scores[selectedIndex][5] + "%";
+      
+          document.getElementById("LanguageScore").textContent = scores[selectedIndex][0] + "%";
+          document.getElementById("ThinkingScore").textContent = scores[selectedIndex][1] + "%";
+          document.getElementById("ArtsScore").textContent = scores[selectedIndex][2] + "%";
+          document.getElementById("ScienceScore").textContent = scores[selectedIndex][3] + "%";
+          document.getElementById("MathematicsScore").textContent = scores[selectedIndex][4] + "%";
+          document.getElementById("GeneralScore").textContent = scores[selectedIndex][5] + "%";
+        } else {
+          // ในกรณีที่ไม่มีข้อมูลให้กำหนดค่าที่แสดงเป็น 0% หรือค่าอื่นๆ ตามต้องการ
+          languageBarFill.style.width = "0%";
+          thinkingBarFill.style.width = "0%";
+          artsBarFill.style.width = "0%";
+          scienceBarFill.style.width = "0%";
+          mathematicsBarFill.style.width = "0%";
+          generalBarFill.style.width = "0%";
+      
+          document.getElementById("LanguageScore").textContent = "0%";
+          document.getElementById("ThinkingScore").textContent = "0%";
+          document.getElementById("ArtsScore").textContent = "0%";
+          document.getElementById("ScienceScore").textContent = "0%";
+          document.getElementById("MathematicsScore").textContent = "0%";
+          document.getElementById("GeneralScore").textContent = "0%";
+        }
       }
+      
     
       // เพิ่ม event listener สำหรับ dropdown เพื่ออัปเดตคะแนนเมื่อมีการเลือกใน dropdown
       document.getElementById("universitySelect").addEventListener("change", updateScores);
     
       // เรียกใช้ฟังก์ชัน updateScores เพื่อแสดงคะแนนเริ่มต้นทันที
       updateScores();
+
+      
       
 
 
