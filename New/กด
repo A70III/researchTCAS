@@ -1,0 +1,6 @@
+        Majors = ['Language', 'Thinking', 'Arts and Society', 'Science', 'Mathematics', 'General']
+
+        # Colors for each sample
+        colors = ['magenta', 'blue', 'green', 'red', 'orange', 'purple', 'yellow', 'cyan', 'brown', 'black']  # จำกัดไว้ให้เท่านั้น
+
+        "Comparison of Universities"
