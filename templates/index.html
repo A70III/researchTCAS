@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>เลือกแถว</title>
+    <style>
+        .select{
+            padding:5px;
+            font-size:16px;
+        }
+        .option{
+            padding:5px;
+            font-size:14px;
+            white-space:pre-line;
+            width:500px;
+        }
+    </style>
 </head>
 <body>
     <h1>เลือกแถว</h1>
     <form method="POST">
         <label for="selected_row">เลือกแถว:</label>
-        <select name="selected_row" id="selected_row">
-            <option value="">-- เลือกค่าทั้งหมด --</option>
+        <select name="selected_row" id="selected_row" class="select">
+            <option value="" class="option">-- เลือกค่าทั้งหมด --</option>
             {% for row in data %}
                 <option value="{{ loop.index0 }}">{{ row['สถาบัน'] }} - {{ row['วิทยาเขต'] }} - {{ row['คณะ/สำนักวิชา'] }}- {{ row['ชื่อหลักสูตร']}}- {% if row['รายละเอียด'] == 0 %} {% else %}{{ row['รายละเอียด'] }}{% endif %}</option>
             {% endfor %}
@@ -66,5 +78,18 @@
         </tr>
     </table>
     {% endif %}
+
+    <script>
+        // script.js
+const dropdown = document.getElementById("selected_row");
+
+for (let i = 0; i < dropdown.options.length; i++) {
+    const optionText = dropdown.options[i].text;
+    if (optionText.length > 200) { // จำกัดความยาวเป็น 250 อักขระ
+        dropdown.options[i].text = optionText.substring(0, 200) + "..."; // เพิ่ม ... เมื่อตัดข้อความ
+    }
+}
+
+    </script>
 </body>
 </html>

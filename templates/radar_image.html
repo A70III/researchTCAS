@@ -13,6 +13,7 @@
     }
 
     .image-frame-container {
+      
       display: flex;
       align-items: center;
     }
@@ -29,11 +30,12 @@
 
     .bar-container {
       display: flex;
+      left: 60%;
       flex-direction: column;
       margin-left: 20px; /* เพิ่ม margin-left เพื่อทำให้ระยะห่างระหว่าง image-frame และ bar-container */
     }
 
-    .label {
+    . label{
       font-size: 18px;
       margin-right: 10px;
     }
@@ -43,7 +45,7 @@
     }
 
     .bar {
-      width: 100%; /* ทำให้ความกว้างเท่ากับ 100% */
+      width: 300px; 
       height: 20px;
       border-radius: 5px;
       margin-bottom: 10px;
@@ -80,7 +82,7 @@
     <div class="bar-container">
       <!-- ส่วนของเนื้อหา -->
       <h1><div class="label">UniversityName</div></h1>
-      <select id="universitySelect" placeholder="University">
+      <select id="universitySelect" placeholder="University" >
         {% for university in universities %}
         <option value="{{ university }}">{{ university }}</option>
         {% endfor %}
@@ -153,6 +155,17 @@
         document.getElementById("MathematicsScore").textContent = "0%";
         document.getElementById("GeneralScore").textContent = "0%";
       }
+
+      // script.js
+const dropdown = document.getElementById("universitySelect");
+
+for (let i = 0; i < dropdown.options.length; i++) {
+    const optionText = dropdown.options[i].text;
+    if (optionText.length > 100) { // จำกัดความยาวเป็น 30 อักขระ
+        dropdown.options[i].text = optionText.substring(0, 100) + "..."; // เพิ่ม ... เมื่อตัดข้อความ
+    }
+}
+
     }
 
     // เพิ่ม event listener สำหรับ dropdown เพื่ออัปเดตคะแนนเมื่อมีการเลือกใน dropdown
