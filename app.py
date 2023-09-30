@@ -29,11 +29,11 @@ def index():
         # สร้างสตริงเพื่อรวมข้อมูลในคอลัมน์ที่ต้องการ
         selected_info = (
             f"ลำดับ: {len(ListU_Name) + 1}\n"
-            f"สถาบัน: {selected_data['สถาบัน']}\n"
-            f"วิทยาเขต: {selected_data['วิทยาเขต']}\n"
-            f"คณะ/สำนักวิชา: {selected_data['คณะ/สำนักวิชา']}\n"
-            f"ชื่อหลักสูตร: {selected_data['ชื่อหลักสูตร']}\n"
-            f"รายละเอียด: {selected_data['รายละเอียด']}"
+            f"{selected_data['สถาบัน']}\n"
+            f"{selected_data['วิทยาเขต']}\n"
+            f"{selected_data['คณะ/สำนักวิชา']}\n"
+            f"{selected_data['ชื่อหลักสูตร']}\n"
+            f"{selected_data['รายละเอียด']}"
         )
 
         # เพิ่มข้อมูลในรายการ ListU_Name
